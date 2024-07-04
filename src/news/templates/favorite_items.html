@@ -7,16 +7,17 @@
 
   <body>
     <header>
-      <h1 class="logo">NEWS</h1>
+      <h1 class="logo">FAVORITE NEWS</h1>
     </header>
     <br />
 
     <div>
-      {% for item in news_items %}
+      {% for item in favorite_items %}
       <div class="container">
-        <h2>{{item.title}} | {{item.source.name}}</h2>
+        <h2>{{item.title}} | {{item.author}}</h2>
         <p>{{item.description}}</p>
-        <form method="post" action="{% url 'add' %}"></form>
+        <a href="{{item.url}}">Источник</a>
+        <sub>{{item.published_at}}</sub>
       </div>
       {% endfor %}
     </div>

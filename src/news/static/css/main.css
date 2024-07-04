@@ -1,6 +1,68 @@
-.container {
-  background: purple;
+/*
+black: #010910 
+indigo: #1d2d40 
+indigo-light: #65718c
+orange: #a85c02 
+grey: #e2e2e2 
+ */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+* {
+  font-family: 'Roboto Mono', monospace;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #010910;
   color: white;
-  margin: 30px auto;
+}
+
+header {
+  background: #65718c;
+  padding: 10px;
+}
+
+header .logo {
+  width: fit-content;
+  margin: 0 auto;
+  cursor: default;
+}
+
+.container {
+  background: #1d2d40;
+  color: white;
+  margin: 15px auto;
+  padding: 15px 30px;
   width: 70vw;
+  border-radius: 8px;
+}
+
+.container h2 {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.container p {
+  font-size: 12px;
+}
+
+#scrollTopButton {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: #a85c02; /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+  font-size: 18px; /* Increase font size */
+}
+
+#scrollTopButton:hover {
+  background-color: #8a4d02; /* Add a dark-grey background on hover */
 }
