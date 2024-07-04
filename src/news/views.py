@@ -29,7 +29,7 @@ def favorites_view(request):
     return render(request, "favorite_items.html", {"favorite_items": items})
 
 
-def add_fovorite(request):
+def add_favorite(request):
     if request.method == "POST":
         ...
 
