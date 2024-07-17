@@ -12,11 +12,31 @@
     <br />
 
     <div>
-      {% for item in news_items %}
+      {% for item in news_items %} {% csrf_token %}
       <div class="container">
-        <h2>{{item.title}} | {{item.source.name}}</h2>
+        <h2>{{item.title}} | автор: {{item.author}}</h2>
         <p>{{item.description}}</p>
-        <form method="post" action="{% url 'add' %}"></form>
+        <sub>{{item.publishedAt}}</sub>
+        <form method="post" action="{% url 'add_favorite' %}">
+          {% csrf_token %}
+          <input type="hidden" name="title" value="{{item.title}}" />
+          <input
+            type="hidden"
+            name="description"
+            value="{{item.description}}"
+          />
+          <input type="hidden" name="source" value="{{item.source.name}}" />
+          <input type="hidden" name="url" value="{{item.url}}" />
+          <input type="hidden" name="author" value="{{item.author}}" />
+          <input
+            type="hidden"
+            name="published_at"
+            value="{{item.publishedAt}}"
+          />
+          <button class="btn-favorite" type="submit">
+            Добавить в избранное
+          </button>
+        </form>
       </div>
       {% endfor %}
     </div>

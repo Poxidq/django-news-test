@@ -1,4 +1,6 @@
 from django.shortcuts import redirect, render
+
+from news.forms import FavoriteForm
 from .models import Favorite
 
 import requests
@@ -19,7 +21,7 @@ def get_articles(category="all", lang="ru", pageSize=100):
 
 
 def homepage_view(request):
-    news = get_articles(category="django", pageSize=10)
+    news = get_articles(category="sport", pageSize=10)
     return render(request, "index.html", {"news_items": news})
 
 
@@ -31,6 +33,16 @@ def favorites_view(request):
 
 def add_favorite(request):
     if request.method == "POST":
-        ...
-
-    return redirect("/")
+        form = FavoriteForm(request.POST)
+        if form.is_valid():
+            favorite = form.save(commit=False)
+            favorite.title = favorite.title or "No Title"
+            favorite.description = favorite.description or "No Description"
+            favorite.url = favorite.url or "http://example.com"
+            favorite.published_at = favorite.published_at or None
+            favorite.author = favorite.author or "Unknown Author"
+            form.save()
+            return redirect("favorites")
+        print("ADD_FOVORITE")
+        print(form.errors)
+    return redirect("home")
